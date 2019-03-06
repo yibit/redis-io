@@ -1,0 +1,27 @@
+{
+  "channels": {
+    "unstable": {
+      "branch": "unstable",
+      "notes": "This is where all the development happens. Only for hard-core hackers. Use only if you need to test the latest features or performance improvements. This is going to be the next Redis release in a few months."
+    },
+
+     "stable": {
+       "branch": "5.0",
+       "version": "5.0.3",
+       "notes": "Redis 5.0 is the first version of Redis to introduce the new stream data type with consumer groups, sorted sets blocking pop operations, LFU/LRU info in RDB, Cluster manager inside redis-cli, active defragmentation V2, HyperLogLogs improvements and many other improvements. Redis 5 was release as GA in October 2018."
+     },
+
+    "docker": {
+      "url": "https://hub.docker.com/_/redis/",
+      "notes": "It is possible to get Docker images of Redis from the Docker Hub. Multiple versions are available, usually updated in a short time after a new release is available."
+    }
+  },
+
+  "other": {
+    "old": {
+      "branch": "4.0",
+      "version": "4.0.13",
+      "notes": "Redis 4.0 was released as GA in July 2017, newcomers should use Redis 5, but Redis 4 is currently the most production-proven release and will be updated for the next year until Redis 6 will be out. It contains several big improvements: a modules system, much better replication (PSYNC2), improvements to eviction policies, threaded DEL/FLUSH, mixed RDB+AOF format, Raspberry Pi support as primary platform, the new MEMORY command, Redis Cluster support for Nat/Docker, active memory defragmentation, memory usage and performance improvements, much faster Redis Cluster key creation, many other smaller features and a number of behavior fixed."
+    }
+  }
+}

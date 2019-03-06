@@ -1,0 +1,47 @@
+.site-content
+  .text
+
+    %h1.command
+      %span.name= @command.name
+      - @command.arguments.each do |arg|
+        %span.arg= arg
+
+    %article
+      .article-main
+
+        %div.metadata
+          - if @command.since
+            %p <strong>Available since #{@command.since}.</strong>
+          - else
+            %p
+              %span.betacmd Beta
+              Not yet available in a stable version of Redis.
+              <a href="/download">Download unstable</a> if you want to test this command.
+
+          - if @command.complexity
+            %p <strong>Time complexity:</strong> #{@command.complexity}
+
+        ~ custom_view("#{documentation_path}/commands/#{@name.downcase}.md", {}, layout: false)
+
+      .article-aside
+        %aside
+
+          - unless @related_topics.empty?
+            %h2 Related topics
+
+            %ul
+              - @related_topics.each do |name, url|
+                %li
+                  %a(href="#{url}")= name
+
+          %h2
+            Related commands
+
+          %ul
+            - @related_commands.each do |command|
+              %li
+                %a(href="/commands/#{command.to_param}")
+                  - if command == @command
+                    %strong= command.name
+                  - else
+                    = command.name

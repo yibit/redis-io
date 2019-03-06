@@ -1,0 +1,88 @@
+!!! 5
+
+%html
+  %head
+    %meta(charset="utf-8")
+    %title= [@title, "Redis"].compact.join(" – ")
+    %link(rel="stylesheet" href="/styles.css")
+    %link(rel="shortcut icon" href="/images/favicon.png")
+    %link(rel="search" type="application/opensearchdescription+xml" title="Look up a Redis command" href="/opensearch.xml")
+    %meta(name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0")
+
+    :javascript
+       var _gaq = _gaq || [];
+       _gaq.push(['_setAccount', 'UA-20243082-1']);
+       _gaq.push(['_trackPageview']);
+
+       (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = '/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+  %body(class="#{@css.join(" ") if @css}")
+    .mobile-menu.slideout-menu
+      %header.menu-header
+
+      %section.menu-section
+        %ul.menu-section-list
+          %li
+            %a.home(href="/") Home
+          %li
+            %a(href="/commands") Commands
+          %li
+            %a(href="/clients") Clients
+          %li
+            %a(href="/documentation") Documentation
+          %li
+            %a(href="/community") Community
+          %li
+            %a(href="/download") Download
+          %li
+            %a(href="/modules") Modules
+          %li
+            %a(href="/support") Support
+
+    .site-wrapper
+
+      %header.site-header
+        %nav.container
+          .mobile-header
+            %button.btn-hamburger.js-slideout-toggle
+              %span.fa.fa-bars
+
+            %a.home(href="/")
+              %img(src="/images/redis-white.png" alt="Redis")
+
+          .desktop-header
+            %a.home(href="/")
+              %img(src="/images/redis-white.png" alt="Redis")
+            %a(href="/commands") Commands
+            %a(href="/clients") Clients
+            %a(href="/documentation") Documentation
+            %a(href="/community") Community
+            %a(href="/download") Download
+            %a(href="/modules") Modules
+            %a(href="/support") Support
+
+      - if Date.today < Date.new(2019, 1, 31)
+        %aside.wide-callout
+          .container
+            RedisConf 2019 <a href="https://myeventi.events/redisconf19/cfp/">call for papers</a> is open.
+
+      = content
+
+      %footer.site-footer
+        .container
+          %p
+            This website is
+            <a href="https://github.com/antirez/redis-io">open source software</a>.
+            See all <a href="/topics/sponsors">credits</a>.
+
+          .sponsor
+            Sponsored by
+            %a(href="https://redislabs.com/")
+              %img(src="/images/redislabs.png" alt="Redis Labs" title="Get a Managed Redis" width="128" height="25")
+
+    %script(src="/jquery-1.4.min.js")
+    %script(src="/app.js?#{File.mtime("public/app.js").to_i}")
